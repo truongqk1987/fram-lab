@@ -4,3 +4,10 @@
 Homestead.yaml
 Homestead.json
 .env
+.idea/blade.xml
+.idea/fram-lab.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/copyright/profiles_settings.xml
