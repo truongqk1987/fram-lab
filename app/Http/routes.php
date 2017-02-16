@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix'=>'orders'], function() {
+    Route::get('/months/{month}',
+        'OrderController@gerOrderListOfMonth')->where(['month'=>'[0-9]{2}']);
+    Route::get('/players/{player}',
+        'OrderController@gerOrderListOfPlayer')->where(['player'=>'[a-zA-Z]+']);
+});
