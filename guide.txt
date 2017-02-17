@@ -1,0 +1,7 @@
+1. Download github source from url: git@github.com:truongqk1987/fram-lab.git
+2. Access to main folder
+3. Run "composer install"
+4. Update file ".evn" fill your db infos
+5. Run "php artisan migrate:refresh"
+6. Run "composer dump-autoload"
+7. Run "php artisan db:seed"
