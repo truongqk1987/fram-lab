@@ -5,7 +5,7 @@ var path = require("path");
 var config = {
 	
 	entry: {
-        dashboard: './resources/assets/js/dashboard',
+        dashboard: './resources/assets/js/routers',
     },
 
 	output: {
