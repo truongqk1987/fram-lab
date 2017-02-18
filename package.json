@@ -3,7 +3,7 @@
   "scripts": {
     "prod": "gulp --production",
     "dev": "gulp watch",
-    "start": "webpack"
+    "start": "grunt && webpack"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
@@ -28,6 +28,10 @@
   },
   "dependencies": {
     "chart.js": "^2.5.0",
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-cssmin": "^2.0.0",
+    "grunt-contrib-less": "^1.4.0",
     "react-chartjs-2": "^2.0.0",
     "react-select": "^1.0.0-rc.3"
   }
