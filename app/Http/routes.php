@@ -11,13 +11,12 @@
 |
 */
 
+
 Route::get('/', function () {
     return redirect()->route('dashboardRoute');
 });
 
-Route::get('/dashboard', ["as"=>"dashboardRoute", function () {
-    return view('welcome');
-}]);
+Route::get('/dashboard', ["as"=>"dashboardRoute", 'uses' => 'DashboardController@loadDashboard']);
 
 Route::group(['prefix'=>'orders'], function() {
     Route::get('/{paymentDate}',
