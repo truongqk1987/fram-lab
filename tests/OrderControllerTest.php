@@ -15,7 +15,7 @@ class OrderControllerTest extends TestCase
         $this->json('GET', $uri); // Check if API return content is JSON
         $response = $this->get($uri);
         $this->assertResponseOk(); // Check status of API is 200
-        
+
     }
 
     public function testIndex() {
