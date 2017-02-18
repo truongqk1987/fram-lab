@@ -25,5 +25,9 @@
     "webpack": "^1.13.2",
     "webpack-raphael": "^2.1.4",
     "whatwg-fetch": "^1.0.0"
+  },
+  "dependencies": {
+    "chart.js": "^2.5.0",
+    "react-chartjs-2": "^2.0.0"
   }
 }

@@ -19,8 +19,7 @@ Route::get('/', function () {
 Route::get('/dashboard', ["as"=>"dashboardRoute", 'uses' => 'DashboardController@loadDashboard']);
 
 Route::group(['prefix'=>'orders'], function() {
-    Route::get('/{paymentDate}',
-        'OrderController@gerOrdersByPaymentDate')->where(['paymentDate'=>'[0-9]{4}-[0-9]{2}-[0-9]{2}']);
-    Route::get('/{playerId}',
-        'OrderController@gerOrdersByPlayerId')->where(['playerId'=>'[0-9]+']);
+    Route::get('/totalOrdersMonthly', 'OrderController@getTotalOrdersMonthly');
+    Route::get('/totalOrdersByPerson', 'OrderController@getTotalOrdersByPerson');
+    Route::get('/totalOrdersByCurrency', 'OrderController@getTotalOrdersByCurrency');
 });
