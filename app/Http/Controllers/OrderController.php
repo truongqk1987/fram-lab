@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\DB;
 class OrderController extends Controller
 {
     public $tableName = 'orders';
+    public $successStatusCode = 200;
+    public $returnContentType = 'application/json';
 
     public function getTotalOrdersMonthly() {
         $rawSQLStatement = 'MONTHNAME(payment_date) as month, COUNT(*) as totalOrders';
@@ -19,7 +21,8 @@ class OrderController extends Controller
                         ->select(DB::raw($rawSQLStatement))
                         ->groupBy($groupByName)
                         ->get();
-        return response()->json(['data'=>$totalOrdersMonthlyResult]);
+        return response()->json(['data'=>$totalOrdersMonthlyResult], $this->successStatusCode)
+                            ->header('Content-Type', $this->returnContentType);
 
     }
 
@@ -30,7 +33,8 @@ class OrderController extends Controller
             ->select(DB::raw($rawSQLStatement))
             ->groupBy($groupByName)
             ->get();
-        return response()->json(['data'=>$totalOrdersByPerson]);
+        return response()->json(['data'=>$totalOrdersByPerson], $this->successStatusCode)
+                            ->header('Content-Type', $this->returnContentType);
 
     }
 
@@ -41,7 +45,8 @@ class OrderController extends Controller
             ->select(DB::raw($rawSQLStatement))
             ->groupBy($groupByName)
             ->get();
-        return response()->json(['data'=>$totalOrdersByCurrency]);
+        return response()->json(['data'=>$totalOrdersByCurrency], $this->successStatusCode)
+                            ->header('Content-Type', $this->returnContentType);
 
     }
 }
