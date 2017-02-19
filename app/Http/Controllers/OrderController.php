@@ -26,14 +26,21 @@ class OrderController extends Controller
 
     }
 
-    public function getTotalOrdersByPerson() {
+    public function getTotalOrdersByPerson(Request $request) {
+        $page = $request->query('page');
+        $pageSize = $request->query('pageSize');
         $rawSQLStatement = 'person_id as personId, COUNT(*) as totalOrders';
         $groupByName = 'person_id';
         $totalOrdersByPerson = DB::table($this->tableName)
             ->select(DB::raw($rawSQLStatement))
             ->groupBy($groupByName)
+            ->take($pageSize)
             ->get();
-        return response()->json(['data'=>$totalOrdersByPerson, 'code'=>$this->successStatusCode], $this->successStatusCode)
+        return response()->json([
+            'data'=>$totalOrdersByPerson,
+            'code'=>$this->successStatusCode,
+            'pages'=>300
+        ], $this->successStatusCode)
                             ->header('Content-Type', $this->returnContentType);
 
     }

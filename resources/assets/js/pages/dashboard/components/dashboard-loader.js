@@ -1,7 +1,6 @@
 "use strict";
 var React = require('react');
 var ChartSection = require('./chart-section.js');
-var TableSection = require('./table-section.js');
 var DashboardLoader = React.createClass({
     render: function() {
         var data = this.props.data;
@@ -29,10 +28,6 @@ var DashboardLoader = React.createClass({
                             <ChartSection data={this.props.data}
                                           reportType={this.props.reportType}/>
 
-                        </div>
-                        <div className="dashboard-table-section">
-                            <TableSection data={this.props.data}
-                                          reportType={this.props.reportType}/>
                         </div>
                     </div>
                 </div>

@@ -61,7 +61,21 @@ var AppConstants = {
                 spanGaps: false,
             }
         ]
-    }
+    },
+
+    REPORT_SELECT_PLACEHOLDER_TEXT: 'Select your report',
+
+    TOTAL_ORDERS_MONTHLY_REPORT_COLUMNS_CONFIG: [
+        {
+            header: 'Person ID',
+            accessor: 'personId'
+        }, {
+            header: 'Total Orders',
+            accessor: 'totalOrders',
+        },
+    ],
+
+    DEFAULT_PAGE_SIZE: 5
 }
 
 module.exports = AppConstants;

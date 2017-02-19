@@ -12,11 +12,14 @@ html, body, #dashboard-container {
     display: flex;
     flex-direction: column;
     .dashboard-select-section {
-      padding: @space-between-component;
+      padding: @space-between-component @space-between-component 0 @space-between-component;
     }
-    .dashboard-loading-loader-container, .dashboard-loader-container, .dashboard-loaded-loader-container {
+    .dashboard-loaded-loader-container {
+      padding: @space-between-component
+    }
+    .dashboar-table-section {
       flex-grow: 1;
-      padding: 0 @space-between-component @space-between-component @space-between-component
+      padding: @space-between-component
     }
   }
 

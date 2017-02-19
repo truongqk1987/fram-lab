@@ -5,6 +5,7 @@ var AppConstants = require('../../constants/app-constants.js');
 var ActionConstants = require('../../constants/action-constants.js');
 var APIURLConstants = require('../../constants/api-url-constants.js');
 var DashboardLoader = require('./components/dashboard-loader.js');
+var TableSection = require('./components/table-section.js');
 var GetAction = require('../../api/get-actions.js');
 var GetStore = require('../../api/get-store.js');
 var reportOptions = AppConstants.CHART_OPTIONS;
@@ -15,21 +16,18 @@ var DashboardPage = React.createClass({
 
     getInitialState: function() {
         return {
-            selectedReportOption: defaultReportOption,
+            selectedReportOption: null,
             reportData: null,
-            isDashboardLoaded: true
+            isDashboardLoading: false
         }
     },
 
     componentDidMount: function() {
-        GetStore.addGetResultListener(ActionConstants.TOTAL_ORDERS_BY_PERSON, this.onTotalOrdersByPersonReady)
         GetStore.addGetResultListener(ActionConstants.TOTAL_ORDERS_BY_CURRENCY, this.onTotalOrdersByCurrencyReady)
         GetStore.addGetResultListener(ActionConstants.TOTAL_ORDERS_MONTHLY, this.onTotalOrdersMonthlyReady)
-        GetAction.get({}, ActionConstants.TOTAL_ORDERS_BY_CURRENCY, APIURLConstants.TOTAL_ORDERS_BY_CURRENCY)
     },
 
     componentWillUnmount: function() {
-        GetStore.removeGetResultListener(ActionConstants.TOTAL_ORDERS_BY_PERSON, this.onTotalOrdersByPersonReady)
         GetStore.removeGetResultListener(ActionConstants.TOTAL_ORDERS_BY_CURRENCY, this.onTotalOrdersByCurrencyReady)
         GetStore.removeGetResultListener(ActionConstants.TOTAL_ORDERS_MONTHLY, this.onTotalOrdersMonthlyReady)
     },
@@ -75,12 +73,14 @@ var DashboardPage = React.createClass({
                 <div className="dashboard-select-section">
                     <SelectBox name="report-select"
                         value={this.state.selectedReportOption}
+                        placeholder={AppConstants.REPORT_SELECT_PLACEHOLDER_TEXT}
                         options={reportOptions}
                         onChange={this.onSelectReportOption}/>
                 </div>
-                <DashboardLoader isLoading={this.state.isDashboardLoaded}
+                <DashboardLoader isLoading={this.state.isDashboardLoading}
                                  data={this.state.reportData}
                                  reportType={this.state.selectedReportOption}/>
+                <TableSection/>
             </div>
         )
     }
