@@ -25,7 +25,7 @@ var TableSection = React.createClass({
 
     fetchData: function(state, instance) {
         var pageSize = state.pageSize;
-        var page = state.page;
+        var page = state.page + 1;
         var sorting = state.sorting;
         if (sorting && sorting[0]) {
             sorting=sorting[0]
@@ -86,7 +86,7 @@ var TableSection = React.createClass({
     render: function() {
         return (
             <div className="dashboar-table-section">
-                <div className="title">Total playing orignal amount by player ID</div>
+                <div className="title">Total playing orignal amount by ayer ID</div>
                 <ReactTable
                     data={this.state.data}
                     columns={columnsConfig}
