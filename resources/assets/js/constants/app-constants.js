@@ -11,24 +11,56 @@ var AppConstants = {
         },
         {
             value: 2,
-            label: 'Total orders by person',
-            actionName: ActionConstants.TOTAL_ORDERS_BY_PERSON,
-            url: APIURLConstants.TOTAL_ORDERS_BY_PERSON
-        },
-        {
-            value: 3,
             label: 'Total orders monthly',
             actionName: ActionConstants.TOTAL_ORDERS_MONTHLY,
             url: APIURLConstants.TOTAL_ORDERS_MONTHLY
         },
     ],
 
-    TOTAL_ORDERS_MONTHLY: 3,
-    TOTAL_ORDERS_BY_PERSON: 2,
+    TOTAL_ORDERS_MONTHLY: 2,
+    TOTAL_ORDERS_BY_PERSON: 3,
     TOTAL_ORDERS_BY_CURRENCY: 1,
 
     API_CODE: {
         SUCCESS: 200
+    },
+
+    BAR_CHART_DEFAULT_DATA: {
+        datasets: [
+            {
+                backgroundColor: 'rgba(255,99,132,0.2)',
+                borderColor: 'rgba(255,99,132,1)',
+                borderWidth: 1,
+                hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+                hoverBorderColor: 'rgba(255,99,132,1)',
+            }
+        ]
+    },
+
+    LINE_CHART_DEFAULT_DATA: {
+        datasets: [
+            {
+                label: "My First dataset",
+                fill: false,
+                lineTension: 0.1,
+                backgroundColor: "rgba(75,192,192,0.4)",
+                borderColor: "rgba(75,192,192,1)",
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: "rgba(75,192,192,1)",
+                pointBackgroundColor: "#fff",
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                pointHoverBorderColor: "rgba(220,220,220,1)",
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                spanGaps: false,
+            }
+        ]
     }
 }
 
