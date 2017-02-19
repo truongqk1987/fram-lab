@@ -34,6 +34,7 @@ curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/loca
 6. Run "php artisan migrate:refresh" to create tables in database (Remember to start DB server)
 7. Run "composer dump-autoload" to load all classes
 8. Run "php artisan db:seed" to insert CSV data to DB
+9. Run "php artisan serve" to test it on locally for go live
 
 ## Running the tests
 
