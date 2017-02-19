@@ -30640,7 +30640,7 @@
 	        header: 'Playing Currency',
 	        accessor: 'playingCurrency'
 	    }, {
-	        header: 'Playing Original Amount',
+	        header: 'Total Playing Original Amount',
 	        accessor: 'playingOriginalAmount'
 	    }],
 
@@ -60621,7 +60621,7 @@
 	            React.createElement(
 	                'div',
 	                { className: 'title' },
-	                'Total playing orignal amount by Player ID'
+	                'Total playing orignal amount by player ID'
 	            ),
 	            React.createElement(ReactTable, {
 	                data: this.state.data,
