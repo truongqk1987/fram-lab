@@ -1,3 +1,4 @@
+"use strict";
 var React = require('react');
 var ChartSection = require('./chart-section.js');
 var TableSection = require('./table-section.js');

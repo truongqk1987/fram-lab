@@ -21,7 +21,7 @@ class OrderController extends Controller
                         ->select(DB::raw($rawSQLStatement))
                         ->groupBy($groupByName)
                         ->get();
-        return response()->json(['data'=>$totalOrdersMonthlyResult], $this->successStatusCode)
+        return response()->json(['data'=>$totalOrdersMonthlyResult, 'code'=>$this->successStatusCode], $this->successStatusCode)
                             ->header('Content-Type', $this->returnContentType);
 
     }
@@ -33,7 +33,7 @@ class OrderController extends Controller
             ->select(DB::raw($rawSQLStatement))
             ->groupBy($groupByName)
             ->get();
-        return response()->json(['data'=>$totalOrdersByPerson], $this->successStatusCode)
+        return response()->json(['data'=>$totalOrdersByPerson, 'code'=>$this->successStatusCode], $this->successStatusCode)
                             ->header('Content-Type', $this->returnContentType);
 
     }
@@ -45,7 +45,7 @@ class OrderController extends Controller
             ->select(DB::raw($rawSQLStatement))
             ->groupBy($groupByName)
             ->get();
-        return response()->json(['data'=>$totalOrdersByCurrency], $this->successStatusCode)
+        return response()->json(['data'=>$totalOrdersByCurrency, 'code'=>$this->successStatusCode], $this->successStatusCode)
                             ->header('Content-Type', $this->returnContentType);
 
     }
