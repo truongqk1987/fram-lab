@@ -60547,17 +60547,44 @@
 	            loading: true,
 	            data: [],
 	            page: 1,
-	            pageSize: AppConstants.DEFAULT_PAGE_SIZE
+	            pageSize: AppConstants.DEFAULT_PAGE_SIZE,
+	            sorting: {
+	                id: 'personId',
+	                desc: false
+	            }
 	        };
 	    },
 
-	    fetchData: function fetchData(state, instance) {},
+	    fetchData: function fetchData(state, instance) {
+	        var pageSize = state.pageSize;
+	        var page = state.page;
+	        var sorting = state.sorting;
+	        if (sorting && sorting[0]) {
+	            sorting = sorting[0];
+	        } else {
+	            sorting = this.state.sorting;
+	        }
+	        this.setState({
+	            page: page,
+	            pageSize: pageSize,
+	            sorting: sorting
+	        }, function () {
+	            this.callTotalOrdersByPersonAPI();
+	        });
+	    },
 
 	    componentDidMount: function componentDidMount() {
 	        GetStore.addGetResultListener(ActionConstants.TOTAL_ORDERS_BY_PERSON, this.onTotalOrdersByPersonReady);
+	        this.callTotalOrdersByPersonAPI();
+	    },
+
+	    callTotalOrdersByPersonAPI: function callTotalOrdersByPersonAPI() {
 	        var requestPage = this.state.page;
 	        var pageSize = this.state.pageSize;
-	        var totalOrdersByPersonAPIUrl = APIURLConstants.TOTAL_ORDERS_BY_PERSON + "?page=" + requestPage + "&pageSize=" + pageSize;
+	        var sorting = this.state.sorting;
+	        var sortingColumn = sorting.id;
+	        var sortingOrder = sorting.desc ? 'desc' : 'asc';
+	        var totalOrdersByPersonAPIUrl = APIURLConstants.TOTAL_ORDERS_BY_PERSON + "?page=" + requestPage + "&pageSize=" + pageSize + "&sorted=" + sortingColumn + "&order=" + sortingOrder;
 	        GetActions.get({}, ActionConstants.TOTAL_ORDERS_BY_PERSON, totalOrdersByPersonAPIUrl);
 	    },
 
@@ -60566,10 +60593,10 @@
 	    },
 
 	    onTotalOrdersByPersonReady: function onTotalOrdersByPersonReady() {
-	        this.processAPIData(ActionConstants.TOTAL_ORDERS_BY_PERSON);
+	        this.processTotalOrdersByPersonAPI(ActionConstants.TOTAL_ORDERS_BY_PERSON);
 	    },
 
-	    processAPIData: function processAPIData(actionName) {
+	    processTotalOrdersByPersonAPI: function processTotalOrdersByPersonAPI(actionName) {
 	        var result = GetStore.getCallbackResult(actionName);
 	        if (result && result.code == AppConstants.API_CODE.SUCCESS) {
 	            var data = result.data;

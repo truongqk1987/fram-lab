@@ -16,19 +16,46 @@ var TableSection = React.createClass({
             data: [],
             page: 1,
             pageSize: AppConstants.DEFAULT_PAGE_SIZE,
+            sorting: {
+                id: 'personId',
+                desc: false,
+            }
         }
     },
 
     fetchData: function(state, instance) {
+        var pageSize = state.pageSize;
+        var page = state.page;
+        var sorting = state.sorting;
+        if (sorting && sorting[0]) {
+            sorting=sorting[0]
+        } else {
+            sorting = this.state.sorting;
+        }
+        this.setState({
+            page: page,
+            pageSize: pageSize,
+            sorting: sorting,
+        }, function() {
+            this.callTotalOrdersByPersonAPI();
+        })
 
     },
 
     componentDidMount: function() {
         GetStore.addGetResultListener(ActionConstants.TOTAL_ORDERS_BY_PERSON, this.onTotalOrdersByPersonReady)
+        this.callTotalOrdersByPersonAPI();
+    },
+
+    callTotalOrdersByPersonAPI: function() {
         var requestPage = this.state.page;
         var pageSize = this.state.pageSize;
+        var sorting = this.state.sorting;
+        var sortingColumn = sorting.id;
+        var sortingOrder = sorting.desc?'desc':'asc';
         var totalOrdersByPersonAPIUrl = APIURLConstants.TOTAL_ORDERS_BY_PERSON
-                + "?page=" + requestPage + "&pageSize=" + pageSize;
+            + "?page=" + requestPage + "&pageSize=" + pageSize
+            + "&sorted=" + sortingColumn + "&order=" + sortingOrder;
         GetActions.get({}, ActionConstants.TOTAL_ORDERS_BY_PERSON, totalOrdersByPersonAPIUrl)
     },
 
@@ -37,10 +64,10 @@ var TableSection = React.createClass({
     },
 
     onTotalOrdersByPersonReady: function() {
-        this.processAPIData(ActionConstants.TOTAL_ORDERS_BY_PERSON)
+        this.processTotalOrdersByPersonAPI(ActionConstants.TOTAL_ORDERS_BY_PERSON)
     },
 
-    processAPIData: function(actionName) {
+    processTotalOrdersByPersonAPI: function(actionName) {
         var result = GetStore.getCallbackResult(actionName);
         if (result && result.code == AppConstants.API_CODE.SUCCESS) {
             var data = result.data;
