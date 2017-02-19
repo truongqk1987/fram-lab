@@ -73,7 +73,7 @@ var AppConstants = {
             header: 'Playing Currency',
             accessor: 'playingCurrency',
         }, {
-            header: 'Playing Original Amount',
+            header: 'Total Playing Original Amount',
             accessor: 'playingOriginalAmount',
         },
     ],

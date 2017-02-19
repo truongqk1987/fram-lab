@@ -86,7 +86,7 @@ var TableSection = React.createClass({
     render: function() {
         return (
             <div className="dashboar-table-section">
-                <div className="title">Total playing orignal amount by Player ID</div>
+                <div className="title">Total playing orignal amount by player ID</div>
                 <ReactTable
                     data={this.state.data}
                     columns={columnsConfig}
