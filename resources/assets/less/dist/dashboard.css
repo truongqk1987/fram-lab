@@ -20,3 +20,7 @@ body,
   flex-grow: 1;
   padding: 18px;
 }
+#dashboard-container .dashboard .dashboar-table-section .title {
+  padding-bottom: 18px;
+  font-size: 20px;
+}

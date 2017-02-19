@@ -60618,6 +60618,11 @@
 	        return React.createElement(
 	            'div',
 	            { className: 'dashboar-table-section' },
+	            React.createElement(
+	                'div',
+	                { className: 'title' },
+	                'Total playing orignal amount by Player ID'
+	            ),
 	            React.createElement(ReactTable, {
 	                data: this.state.data,
 	                columns: columnsConfig,
