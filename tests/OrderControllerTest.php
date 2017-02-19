@@ -28,7 +28,7 @@ class OrderControllerTest extends TestCase
     }
 
     public function testTotalOrdersByPersonAPI() {
-        $this->checkGETAPI('/orders/totalOrdersByPerson');
+        $this->checkGETAPI('/orders/totalOrdersByPerson?page=1&pageSize=5&sorted=personId&order=asc');
     }
 
     public function testTotalOrdersByCurrencyAPI() {

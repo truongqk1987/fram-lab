@@ -30,11 +30,11 @@ class OrderController extends Controller
         $pageSize = $request->query('pageSize');
         $sortedColumn = $request->query('sorted');
         $sortOrder = $request->query('order');
-        $rawSQLStatement = 'person_id as personId, COUNT(*) as totalOrders';
+        $rawSQLStatement = 'person_id as personId, playing_currency as playingCurrency, SUM(playing_original_amount) as playingOriginalAmount';
         $groupByName = 'person_id';
         $totalOrdersByPerson = DB::table($this->tableName)
             ->select(DB::raw($rawSQLStatement))
-            ->groupBy($groupByName)
+            ->groupBy($groupByName, 'playing_currency')
             ->orderBy($sortedColumn, $sortOrder)
             ->paginate($pageSize);
         return response()->json(['code'=>$this->successStatusCode,

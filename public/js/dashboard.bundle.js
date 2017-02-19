@@ -30637,8 +30637,11 @@
 	        header: 'Person ID',
 	        accessor: 'personId'
 	    }, {
-	        header: 'Total Orders',
-	        accessor: 'totalOrders'
+	        header: 'Playing Currency',
+	        accessor: 'playingCurrency'
+	    }, {
+	        header: 'Playing Original Amount',
+	        accessor: 'playingOriginalAmount'
 	    }],
 
 	    DEFAULT_PAGE_SIZE: 5
